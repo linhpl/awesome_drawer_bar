@@ -295,7 +295,8 @@ class _AwesomeDrawerBarState extends State<AwesomeDrawerBar> with SingleTickerPr
     return AnimatedBuilder(
       animation: _animationController,
       builder: (context, child) {
-        double rightSlide = MediaQuery.of(context).size.width * 0.75;
+        MediaQueryData mediaQuery = MediaQuery.of(context);
+        double rightSlide = mediaQuery.size.width * 0.75 > 400 ? 400 : mediaQuery.size.width * 0.75;
         double left = (1 - _animationController.value) * rightSlide;
         return dragClick(
           menuScreen: GestureDetector(
