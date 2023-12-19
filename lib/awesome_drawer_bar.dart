@@ -317,13 +317,19 @@ class _AwesomeDrawerBarState extends State<AwesomeDrawerBar> with SingleTickerPr
             },
           ),
           mainScreen: ClipRRect(
-            borderRadius: BorderRadius.circular(widget.borderRadius * _animationController.value),
+            borderRadius: BorderRadiusDirectional.only(
+              topEnd: Radius.circular(widget.borderRadius * _animationController.value),
+              bottomEnd: Radius.circular(widget.borderRadius * _animationController.value),
+            ),
             child: Transform.translate(
               offset: Offset(widget.isRTL ? left : -left, 0),
               child: Container(
                 decoration: BoxDecoration(
                   color: widget.backgroundColor,
-                  borderRadius: BorderRadius.circular(widget.borderRadius * _animationController.value),
+                  borderRadius: BorderRadiusDirectional.only(
+                    topEnd: Radius.circular(widget.borderRadius * _animationController.value),
+                    bottomEnd: Radius.circular(widget.borderRadius * _animationController.value),
+                  ),
                 ),
                 width: rightSlide,
                 child: widget.menuScreen,
